@@ -1,3 +1,6 @@
+#include <list>
+#include <future>
+
 template<typename T>
 std::list<T> parallel_quick_sort(std::list<T> input)
 {
@@ -21,3 +24,9 @@ std::list<T> parallel_quick_sort(std::list<T> input)
     result.splice(result.begin(),new_lower.get());
     return result;
 }
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
+

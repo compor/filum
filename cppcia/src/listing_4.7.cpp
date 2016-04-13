@@ -32,3 +32,8 @@ public:
     void operator()();
 };
 auto f5=std::async(move_only());
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

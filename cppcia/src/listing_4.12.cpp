@@ -1,3 +1,5 @@
+#include <list>
+
 template<typename T>
 std::list<T> sequential_quick_sort(std::list<T> input)
 {
@@ -18,7 +20,14 @@ std::list<T> sequential_quick_sort(std::list<T> input)
     auto new_higher(
         sequential_quick_sort(std::move(input)));
     result.splice(result.end(),new_higher);
-    Using synchronization of operations to simplify code
+    // Using synchronization of operations to simplify code
         result.splice(result.begin(),new_lower);
     return result;
 }
+
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
+

@@ -16,3 +16,9 @@ bool wait_loop()
     }
     return done;
 }
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
+
