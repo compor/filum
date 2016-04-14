@@ -32,7 +32,7 @@ echo "info: boost dir: ${BOOST_ROOT_DIR}"
 echo ""
 
 
-CXX=clang++ \
+CC=clang CXX=clang++ \
   cmake \
   -DBOOST_ROOT=${BOOST_ROOT_DIR} \
   -DCMAKE_CXX_FLAGS="-stdlib=libc++" \
