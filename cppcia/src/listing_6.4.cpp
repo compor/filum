@@ -13,10 +13,10 @@ private:
             data(std::move(data_))
         {}
     };
-    
+
     std::unique_ptr<node> head;
     node* tail;
-    
+
 public:
     queue():
         tail(nullptr)
@@ -37,7 +37,7 @@ public:
         head=std::move(old_head->next);
         return res;
     }
-    
+
     void push(T new_value)
     {
         std::unique_ptr<node> p(new node(std::move(new_value)));
@@ -53,4 +53,9 @@ public:
         tail=new_tail;
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
 

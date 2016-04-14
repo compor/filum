@@ -1,4 +1,4 @@
-std::mutex config_mutex;
+/*std::mutex config_mutex;
 std::vector<interruptible_thread> background_threads;
 
 void background_thread(int disk_id)
@@ -35,4 +35,10 @@ int main()
     {
         background_threads[i].join();
     }
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }
+

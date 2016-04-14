@@ -8,10 +8,10 @@ private:
         std::shared_ptr<T> data;
         std::unique_ptr<node> next;
     };
-    
+
     std::unique_ptr<node> head;
     node* tail;
-    
+
 public:
     queue():
         head(new node),tail(head.get())
@@ -31,7 +31,7 @@ public:
         head=std::move(old_head->next);
         return res;
     }
-    
+
     void push(T new_value)
     {
         std::shared_ptr<T> new_data(
@@ -44,3 +44,8 @@ public:
     }
 };
 
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

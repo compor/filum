@@ -1,3 +1,6 @@
+#include <string>
+
+
 struct card_inserted
 {
     std::string account;

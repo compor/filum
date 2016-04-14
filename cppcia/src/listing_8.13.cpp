@@ -7,7 +7,7 @@ struct join_threads
     join_threads(std::vector<std::thread>&)
     {}
 };
-    
+
 
 struct barrier
 {
@@ -95,4 +95,9 @@ void parallel_partial_sum(Iterator first,Iterator last)
                                std::ref(buffer),i,std::ref(b));
     }
     process_element()(first,last,buffer,length-1,b);
+}
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

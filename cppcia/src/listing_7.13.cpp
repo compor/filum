@@ -60,3 +60,9 @@ public:
         tail.store(p);
     }
 };
+
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

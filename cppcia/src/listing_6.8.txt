@@ -1,3 +1,6 @@
+#include <memory>
+#include <mutex>
+
 template<typename T>
 void threadsafe_queue<T>::push(T new_value)
 {
@@ -12,4 +15,9 @@ void threadsafe_queue<T>::push(T new_value)
         tail=new_tail;
     }
     data_cond.notify_one();
+}
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

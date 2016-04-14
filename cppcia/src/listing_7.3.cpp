@@ -29,3 +29,8 @@ public:
         return old_head ? old_head->data : std::shared_ptr<T>();
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

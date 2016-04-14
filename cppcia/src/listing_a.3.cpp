@@ -21,3 +21,8 @@ public:
         return a+b;
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

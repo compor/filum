@@ -1,3 +1,6 @@
+#include <thread>
+#include <atomic>
+
 class barrier
 {
     unsigned const count;
@@ -22,3 +25,8 @@ public:
         }
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

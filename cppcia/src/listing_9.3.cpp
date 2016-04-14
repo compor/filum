@@ -1,4 +1,4 @@
-template<typename Iterator,typename T>
+/*template<typename Iterator,typename T>
 T parallel_accumulate(Iterator first,Iterator last,T init)
 {
     unsigned long const length=std::distance(first,last);
@@ -28,4 +28,9 @@ T parallel_accumulate(Iterator first,Iterator last,T init)
     }
     result += last_result;
     return result;
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

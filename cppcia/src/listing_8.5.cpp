@@ -1,3 +1,7 @@
+#include <iterator>
+#include <numeric>
+#include <future>
+
 template<typename Iterator,typename T>
 T parallel_accumulate(Iterator first,Iterator last,T init)
 {
@@ -17,4 +21,9 @@ T parallel_accumulate(Iterator first,Iterator last,T init)
         T second_half_result=parallel_accumulate(mid_point,last,T());
         return first_half_result.get()+second_half_result;
     }
+}
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

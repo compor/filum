@@ -1,4 +1,4 @@
-std::thread task_thread;
+/*std::thread task_thread;
 std::atomic<bool> task_cancelled(false);
 
 void gui_thread()
@@ -47,4 +47,10 @@ void process(event_data const& event)
     default:
         //...
     }
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }
+

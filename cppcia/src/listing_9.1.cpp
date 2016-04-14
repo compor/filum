@@ -1,4 +1,8 @@
-class thread_pool
+#include <vector>
+#include <thread>
+#include <atomic>
+
+/*class thread_pool
 {
     std::atomic_bool done;
     thread_safe_queue<std::function<void()> > work_queue;
@@ -50,4 +54,9 @@ public:
     {
         work_queue.push(std::function<void()>(f));
     }
-};
+};*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

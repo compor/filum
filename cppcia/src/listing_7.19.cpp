@@ -1,4 +1,4 @@
-template<typename T>
+/*template<typename T>
 class lock_free_queue
 {
 private:
@@ -24,4 +24,10 @@ private:
             delete ptr;
         }
     }
-};
+};*/
+
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

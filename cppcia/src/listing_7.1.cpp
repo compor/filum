@@ -16,3 +16,8 @@ public:
         flag.clear(std::memory_order_release);
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

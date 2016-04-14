@@ -1,4 +1,5 @@
 #include <atomic>
+#include <memory>
 
 template<typename T>
 class lock_free_queue
@@ -57,3 +58,8 @@ public:
         }
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

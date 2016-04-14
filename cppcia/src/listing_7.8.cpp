@@ -1,6 +1,6 @@
 #include <atomic>
 
-template<typename T>
+/*template<typename T>
 void do_delete(void* p)
 {
     delete static_cast<T*>(p);
@@ -48,4 +48,9 @@ void delete_nodes_with_no_hazards()
         }
         current=next;
     }
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

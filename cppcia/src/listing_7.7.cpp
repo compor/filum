@@ -47,3 +47,8 @@ std::atomic<void*>& get_hazard_pointer_for_current_thread()
     thread_local static hp_owner hazard;
     return hazard.get_pointer();
 }
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

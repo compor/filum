@@ -1,10 +1,10 @@
-class work_stealing_queue
+/*class work_stealing_queue
 {
 private:
     typedef function_wrapper data_type;
     std::deque<data_type> the_queue;
     mutable std::mutex the_mutex;
-    
+
 public:
     work_stealing_queue()
     {}
@@ -32,7 +32,7 @@ public:
         {
             return false;
         }
-        
+
         res=std::move(the_queue.front());
         the_queue.pop_front();
         return true;
@@ -45,9 +45,14 @@ public:
         {
             return false;
         }
-        
+
         res=std::move(the_queue.back());
         the_queue.pop_back();
         return true;
     }
-};
+};*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

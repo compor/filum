@@ -1,3 +1,5 @@
+#include <algorithm>
+
 class X
 {
 private:
@@ -21,3 +23,8 @@ public:
         other.data=nullptr;
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

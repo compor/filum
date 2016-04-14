@@ -21,3 +21,8 @@ public:
         while(!head.compare_exchange_weak(new_node->next,new_node));
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

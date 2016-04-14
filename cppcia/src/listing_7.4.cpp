@@ -1,7 +1,7 @@
 #include <atomic>
 #include <memory>
 
-template<typename T>
+/*template<typename T>
 class lock_free_stack
 {
 private:
@@ -22,4 +22,10 @@ public:
         try_reclaim(old_head);
         return res;
     }
-};
+};*/
+
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

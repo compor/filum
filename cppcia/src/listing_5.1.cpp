@@ -1,3 +1,5 @@
+#include <atomic>
+
 class spinlock_mutex
 {
     std::atomic_flag flag;
@@ -14,3 +16,9 @@ public:
         flag.clear(std::memory_order_release);
     }
 };
+
+int main(int argc, char *argv[])
+{
+  return 0;
+}
+

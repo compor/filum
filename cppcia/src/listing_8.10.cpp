@@ -1,3 +1,6 @@
+#include <future>
+#include <atomic>
+
 template<typename Iterator,typename MatchType>
 Iterator parallel_find_impl(Iterator first,Iterator last,MatchType match,
                             std::atomic<bool>& done)
@@ -42,4 +45,9 @@ Iterator parallel_find(Iterator first,Iterator last,MatchType match)
 {
     std::atomic<bool> done(false);
     return parallel_find_impl(first,last,match,done);
+}
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

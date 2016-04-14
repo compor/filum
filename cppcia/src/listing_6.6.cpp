@@ -10,12 +10,12 @@ private:
         std::shared_ptr<T> data;
         std::unique_ptr<node> next;
     };
-    
+
     std::mutex head_mutex;
     std::unique_ptr<node> head;
     std::mutex tail_mutex;
     node* tail;
-    
+
     node* get_tail()
     {
         std::lock_guard<std::mutex> tail_lock(tail_mutex);
@@ -33,7 +33,7 @@ private:
         head=std::move(old_head->next);
         return old_head;
     }
-        
+
 
 public:
     threadsafe_queue():
@@ -48,7 +48,7 @@ public:
         std::unique_ptr<node> old_head=pop_head();
         return old_head?old_head->data:std::shared_ptr<T>();
     }
-    
+
     void push(T new_value)
     {
         std::shared_ptr<T> new_data(
@@ -62,3 +62,7 @@ public:
     }
 };
 
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

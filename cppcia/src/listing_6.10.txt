@@ -1,3 +1,6 @@
+#include <memory>
+#include <mutex>
+
 template<typename T>
 class threadsafe_queue
 {
@@ -42,3 +45,9 @@ public:
         return (head==get_tail());
     }
 };
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
+

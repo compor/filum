@@ -1,6 +1,10 @@
+#include "listing_c.1.hpp"
+
+#include <thread>
+
 int main()
 {
-    bank_machine bank;
+    /*bank_machine bank;
     interface_machine interface_hardware;
     atm machine(bank.get_sender(),interface_hardware.get_sender());
     std::thread bank_thread(&bank_machine::run,&bank);
@@ -47,5 +51,5 @@ int main()
     interface_hardware.done();
     atm_thread.join();
     bank_thread.join();
-    if_thread.join();
+    if_thread.join();*/
 }

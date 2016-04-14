@@ -1,4 +1,4 @@
-class interrupt_flag
+/*class interrupt_flag
 {
 public:
     void set();
@@ -28,4 +28,9 @@ public:
             flag->set();
         }
     }
-};
+};*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

@@ -1,4 +1,4 @@
-class interrupt_flag
+/*class interrupt_flag
 {
     std::atomic<bool> flag;
     std::condition_variable* thread_cond;
@@ -54,4 +54,9 @@ void interruptible_wait(std::condition_variable& cv,
     interruption_point();
     cv.wait_for(lk,std::chrono::milliseconds(1));
     interruption_point();
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

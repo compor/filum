@@ -1,7 +1,7 @@
 #include <atomic>
 #include <memory>
 
-template<typename T>
+/*template<typename T>
 class lock_free_stack
 {
 private:
@@ -29,4 +29,10 @@ public:
                   &head,&old_head,old_head->next));
         return old_head ? old_head->data : std::shared_ptr<T>();
     }
-};
+};*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
+

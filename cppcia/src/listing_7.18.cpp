@@ -1,4 +1,4 @@
-template<typename T>
+/*template<typename T>
 class lock_free_queue
 {
 private:
@@ -18,3 +18,9 @@ private:
         old_counter.external_count=new_counter.external_count;
     }
 };
+*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

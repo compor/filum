@@ -1,4 +1,7 @@
-template<typename T>
+#include <list>
+#include <future>
+
+/*template<typename T>
 struct sorter
 {
     struct chunk_to_sort
@@ -99,4 +102,9 @@ std::list<T> parallel_quick_sort(std::list<T> input)
     }
     sorter<T> s;
     return s.do_sort(input);
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

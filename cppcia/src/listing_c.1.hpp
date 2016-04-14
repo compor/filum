@@ -1,26 +1,21 @@
-#include
-#include
-#include
-#include
-<mutex>
-<condition_variable>
-<queue>
-<memory>
+#include <mutex>
+#include <queue>
+#include <memory>
+#include <condition_variable>
+
 namespace messaging
 {
     struct message_base
     {
-        virtual ~message_base()
-        {}
+        virtual ~message_base() {}
     };
 
     template<typename Msg>
-    struct wrapped_message:
-        message_base
+    struct wrapped_message : message_base
     {
         Msg contents;
-        explicit wrapped_message(Msg const& contents_):
-            contents(contents_)
+        explicit wrapped_message(Msg const& contents_)
+          : contents(contents_)
         {}
     };
 
@@ -28,7 +23,6 @@ namespace messaging
     {
         std::mutex m;
         std::condition_variable c;
-        message_base
         std::queue<std::shared_ptr<message_base> > q;
     public:
         template<typename T>
@@ -48,3 +42,4 @@ namespace messaging
         }
     };
 }
+

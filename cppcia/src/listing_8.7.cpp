@@ -1,4 +1,9 @@
-template<typename Iterator,typename Func>
+#include <algorithm>
+#include <iterator>
+#include <thread>
+#include <future>
+
+/*template<typename Iterator,typename Func>
 void parallel_for_each(Iterator first,Iterator last,Func f)
 {
     unsigned long const length=std::distance(first,last);
@@ -41,4 +46,9 @@ void parallel_for_each(Iterator first,Iterator last,Func f)
     {
         futures[i].get();
     }
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

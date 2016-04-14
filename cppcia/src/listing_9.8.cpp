@@ -1,7 +1,7 @@
-class thread_pool
+/*class thread_pool
 {
     typedef function_wrapper task_type;
-    
+
     std::atomic_bool done;
     thread_safe_queue<task_type> pool_work_queue;
     std::vector<std::unique_ptr<work_stealing_queue> > queues;
@@ -10,7 +10,7 @@ class thread_pool
 
     static thread_local work_stealing_queue* local_work_queue;
     static thread_local unsigned my_index;
-   
+
     void worker_thread(unsigned my_index_)
     {
         my_index=my_index_;
@@ -41,7 +41,7 @@ class thread_pool
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -67,7 +67,7 @@ public:
             throw;
         }
     }
-    
+
     ~thread_pool()
     {
         done=true;
@@ -81,7 +81,7 @@ public:
         FunctionType f)
     {
         typedef std::result_of<FunctionType()>::type result_type;
-        
+
         std::packaged_task<result_type()> task(f);
         task_handle<result_type> res(task.get_future());
         if(local_work_queue)
@@ -109,4 +109,9 @@ public:
             std::this_thread::yield();
         }
     }
-};
+};*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}

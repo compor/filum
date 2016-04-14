@@ -1,4 +1,10 @@
-template<typename Iterator>
+#include <algorithm>
+#include <numeric>
+#include <vector>
+#include <thread>
+#include <future>
+
+/*template<typename Iterator>
 void parallel_partial_sum(Iterator first,Iterator last)
 {
     typedef typename Iterator::value_type value_type;
@@ -90,4 +96,9 @@ void parallel_partial_sum(Iterator first,Iterator last)
     process_chunk()(block_start,final_element,
                     (num_threads>1)?&previous_end_values.back():0,
                     0);
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

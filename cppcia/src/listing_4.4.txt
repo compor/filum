@@ -56,3 +56,9 @@ void data_processing_thread()
             break;
     }
 }
+
+int main(int argc, const char *argv[])
+{
+
+  return 0;
+}

@@ -1,3 +1,8 @@
+#include <iterator>
+#include <algorithm>
+#include <thread>
+#include <future>
+
 template<typename Iterator,typename Func>
 void parallel_for_each(Iterator first,Iterator last,Func f)
 {
@@ -21,4 +26,9 @@ void parallel_for_each(Iterator first,Iterator last,Func f)
         parallel_for_each(mid_point,last,f);
         first_half.get();
     }
+}
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

@@ -1,3 +1,7 @@
+#include <map>
+#include <vector>
+#include <mutex>
+
 std::map<Key,Value> threadsafe_lookup_table::get_map() const
 {
     std::vector<std::unique_lock<boost::shared_mutex> > locks;
@@ -17,4 +21,9 @@ std::map<Key,Value> threadsafe_lookup_table::get_map() const
         }
     }
     return res;
+}
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

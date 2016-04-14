@@ -1,4 +1,6 @@
-template<typename T>
+#include <atomic>
+
+/*template<typename T>
 class lock_free_queue
 {
 private:
@@ -30,4 +32,10 @@ public:
             ptr->release_ref();
         }
     }
-};
+};*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
+

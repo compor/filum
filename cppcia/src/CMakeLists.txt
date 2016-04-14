@@ -3,6 +3,8 @@
 cmake_minimum_required(VERSION 3.2)
 project(CCIA)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+
 find_package(Boost COMPONENTS thread system REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIRS})

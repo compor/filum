@@ -1,7 +1,7 @@
 #include <atomic>
 #include <memory>
 
-std::shared_ptr<T> pop()
+/*std::shared_ptr<T> pop()
 {
     std::atomic<void*>& hp=get_hazard_pointer_for_current_thread();
     node* old_head=head.load();
@@ -33,4 +33,9 @@ std::shared_ptr<T> pop()
         delete_nodes_with_no_hazards();
     }
     return res;
+}*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
 }

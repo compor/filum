@@ -1,6 +1,6 @@
 #include <atomic>
 
-template<typename T>
+/*template<typename T>
 class lock_free_stack
 {
 private:
@@ -54,4 +54,9 @@ private:
     {
         chain_pending_nodes(n,n);
     }
-};
+};*/
+
+int main(int argc, const char *argv[])
+{
+  return 0;
+}
