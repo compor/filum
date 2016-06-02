@@ -162,17 +162,19 @@ int main(int argc, const char *argv[]) {
   std::cout.setf(std::ios::unitbuf);
   g_gen.seed(std::random_device()());
 
-  auto g_dining_table = std::make_shared<dining_table_t>(g_diners_num);
+  auto dining_table = std::make_shared<dining_table_t>(g_diners_num);
+  std::cout << "serving " << dining_table->size() << " diners" << std::endl;
 
-  for (const auto &d : *g_dining_table)
-    g_dining_table->push_back(chopstick{});
+  // for (const auto &d : *dining_table)
+  for (auto i = 0; i < g_diners_num; ++i)
+    dining_table->push_back(chopstick{});
 
   std::vector<philosopher> diners{
-    philosopher("Xeno", g_dining_table),
-    philosopher("Plato", g_dining_table),
-    philosopher("Aristotle", g_dining_table),
-    philosopher("Socrates", g_dining_table),
-    philosopher("Marcus Aurelius", g_dining_table),
+    philosopher("Xeno", dining_table),
+    philosopher("Plato", dining_table),
+    philosopher("Aristotle", dining_table),
+    philosopher("Socrates", dining_table),
+    philosopher("Marcus Aurelius", dining_table),
   };
 
   std::array<std::thread, g_diners_num> work;
