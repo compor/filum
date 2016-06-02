@@ -1,5 +1,8 @@
 // ex001
 
+#include <ios>
+// using std::ios::unitbuf
+
 #include <iostream>
 // using std::cout
 
@@ -31,6 +34,9 @@ using namespace std::chrono_literals;
 #include <array>
 // using std::array
 
+#include <vector>
+// using std::vector
+
 #include <limits>
 // using std::numeric_limits
 
@@ -43,6 +49,18 @@ std::mt19937 g_gen;
 std::uniform_int_distribution<unsigned int> g_dis{1, 10};
 const std::size_t g_diners_num = 5;
 
+
+void
+ordered_out(const std::string &s) {
+  static std::mutex g_ordered_out_mtx;
+
+  std::lock_guard<std::mutex> lock(g_ordered_out_mtx);
+  std::cout << s;
+
+  return;
+}
+
+
 template<typename T>
 using nl = std::numeric_limits<T>;
 
@@ -52,17 +70,14 @@ struct chopstick {
   chopstick() : mtx(std::make_unique<std::mutex>()) {}
 };
 
-template<std::size_t N>
-using dining_table_t = std::array<chopstick, N>;
+using dining_table_t = std::vector<chopstick>;
 
-dining_table_t<g_diners_num> g_dining_table{
-  { chopstick(), chopstick(), chopstick(), chopstick(), chopstick() } };
 
 struct philosopher {
 public:
   using utensil_id = std::size_t;
 
-  philosopher(const std::string &name, dining_table_t<g_diners_num> &table)
+  philosopher(const std::string &name, std::shared_ptr<dining_table_t> table)
   : m_name(name), m_table(table),
   lhs_utensil(nl<utensil_id>::max()), rhs_utensil(nl<utensil_id>::max())
   {
@@ -71,7 +86,7 @@ public:
 
   ~philosopher() = default;
   philosopher(const philosopher&) = default;
-  philosopher &operator=(const philosopher&) = delete;
+  philosopher &operator=(const philosopher&) = default;
 
   bool is_dining() const {
     bool flag = (lhs_utensil != nl<utensil_id>::max()) &&
@@ -89,33 +104,50 @@ public:
 
   const std::string &get_name() const { return m_name; }
 
-  void acquire_utensils() {
-    auto pos1 = m_dis(m_gen) % m_table.size();
-    m_table[pos1].mtx->lock();
+  void dine() {
+    auto pos1 = m_dis(m_gen) % m_table->size();
+    (*m_table)[pos1].mtx->lock();
     lhs_utensil = pos1;
 
-    auto pos2 = (lhs_utensil + 1) % m_table.size();
-    m_table[pos2].mtx->lock();
+    std::stringstream ss;
+    ss << m_name << " acquired: " << lhs_utensil << std::endl;
+    ordered_out(ss.str());
+    ss.str("");
+
+    auto pos2 = (lhs_utensil + 1) % m_table->size();
+    (*m_table)[pos2].mtx->lock();
     rhs_utensil = pos2;
 
-    return;
-  }
+    ss << m_name << " acquired: " << rhs_utensil << std::endl;
+    ordered_out(ss.str());
+    ss.str("");
 
-  void release_utensils() {
-    //if (is_dining()) {
-      m_table[lhs_utensil].mtx->unlock();
-      lhs_utensil = nl<utensil_id>::max();
+    auto s = m_dis(m_gen) % 10 + 1;
+    ss << m_name << " is dining for "<< s << "secs" << std::endl;
+    ordered_out(ss.str());
+    ss.str("");
+    std::this_thread::sleep_for(std::chrono::seconds(s));
 
-      m_table[rhs_utensil].mtx->unlock();
-      lhs_utensil = nl<utensil_id>::max();
-    //}
+    (*m_table)[lhs_utensil].mtx->unlock();
+    lhs_utensil = nl<utensil_id>::max();
+
+    ss << m_name << " released: " << pos1 << std::endl;
+    ordered_out(ss.str());
+    ss.str("");
+
+    (*m_table)[rhs_utensil].mtx->unlock();
+    lhs_utensil = nl<utensil_id>::max();
+
+    ss << m_name << " released: " << pos2 << std::endl;
+    ordered_out(ss.str());
+    ss.str("");
 
     return;
   }
 
 private:
   std::string m_name;
-  dining_table_t<g_diners_num> &m_table;
+  std::shared_ptr<dining_table_t> m_table;
   utensil_id lhs_utensil;
   utensil_id rhs_utensil;
 
@@ -127,36 +159,28 @@ private:
 //
 
 int main(int argc, const char *argv[]) {
+  std::cout.setf(std::ios::unitbuf);
   g_gen.seed(std::random_device()());
 
-  std::array<philosopher, g_diners_num> diners{ {
+  auto g_dining_table = std::make_shared<dining_table_t>(g_diners_num);
+
+  for (const auto &d : *g_dining_table)
+    g_dining_table->push_back(chopstick{});
+
+  std::vector<philosopher> diners{
     philosopher("Xeno", g_dining_table),
     philosopher("Plato", g_dining_table),
     philosopher("Aristotle", g_dining_table),
     philosopher("Socrates", g_dining_table),
     philosopher("Marcus Aurelius", g_dining_table),
-  } };
+  };
 
   std::array<std::thread, g_diners_num> work;
 
-  auto fn = [](philosopher &p) {
-    while (true) {
-      p.acquire_utensils();
-
-      std::stringstream ss;
-      ss << p.get_name() << " acquired: " << p.get_lhs_utensil() << " and " << p.get_rhs_utensil();
-      auto s = g_dis(g_gen);
-      ss << " for "<< s << "secs";
-      std::cout << ss.str() << std::endl;
-      std::this_thread::sleep_for(std::chrono::seconds(s));
-
-      std::cout << p.get_name() << " releasing" << std::endl;
-      p.release_utensils();
-    }
-  };
+  auto lucullan_feast = [](philosopher &p) { while (true) { p.dine(); } };
 
   for (auto i = 0; i < diners.size(); ++i)
-    work[i] = std::thread{ fn, std::ref(diners[i]) };
+    work[i] = std::thread{ lucullan_feast, std::ref(diners[i]) };
 
   std::for_each(work.begin(), work.end(), [](auto &t){t.join();});
 
