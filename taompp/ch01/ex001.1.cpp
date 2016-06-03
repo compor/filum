@@ -114,6 +114,7 @@ public:
     ordered_out(ss.str());
     ss.str("");
 
+    std::this_thread::sleep_for(20s);
     auto pos2 = (lhs_utensil + 1) % m_table->size();
     (*m_table)[pos2].mtx->lock();
     rhs_utensil = pos2;
