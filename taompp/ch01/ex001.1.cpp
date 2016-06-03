@@ -165,10 +165,6 @@ int main(int argc, const char *argv[]) {
   auto dining_table = std::make_shared<dining_table_t>(g_diners_num);
   std::cout << "serving " << dining_table->size() << " diners" << std::endl;
 
-  // for (const auto &d : *dining_table)
-  for (auto i = 0; i < g_diners_num; ++i)
-    dining_table->push_back(chopstick{});
-
   std::vector<philosopher> diners{
     philosopher("Xeno", dining_table),
     philosopher("Plato", dining_table),
